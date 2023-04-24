@@ -1,0 +1,144 @@
+
+<ScreenTwoView>:
+    height: senhaCadastro.height
+    height: confirmarSenhaCadastro.height
+    name: "s2"
+    MDScreen:
+        Image:
+            source: "imagens/cadastrar/background.png"
+            size_hint:(1, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+        
+        Image:
+            source: "imagens/cadastrar/background.png"
+            size_hint:(1, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+
+        Image:
+            source: "imagens/cadastrar/background_cadastrar.png"
+            size_hint:(1, 1)
+            pos_hint: {"center_x": 0.3, "center_y": 0.5}
+
+        Image:
+            source: "imagens/cadastrar/astronauta2.png"
+            size_hint: (.5, .5)
+            pos_hint: {"center_x": 0.8, "center_y": 0.22}
+       
+        MDLabel:
+            text: "Cadastro"
+            font_style: "H4"
+            font_name: "fontes/exo_space/Exo Space DEMO.ttf"
+            pos_hint: {"center_x": 0.73, "center_y": 0.83}
+       
+        MDLabel:
+            text: "Bem Vindo!"
+            font_style: "H3"
+            caption: True
+            font_name: "fontes/exo_space/Exo Space DEMO.ttf"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.77, "center_y": 0.7}
+
+        MDLabel:
+            text: "Realize seu cadastrado"
+            font_style: "H5"
+            font_name: "fontes/exo_space/Exo Space DEMO.ttf"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.8, "center_y": 0.65}
+
+        MDTextField:
+            id: nomeCadastro
+            font_size: 18
+            hint_text: "Nome"
+            size_hint_x: .3
+            pos_hint: {"center_x": 0.3, "center_y": 0.75}
+            icon_left: "text-box-outline"
+            
+        MDTextField:
+            id: emailCadastro
+            font_size: 18
+            hint_text: "Email"
+            size_hint_x: .3
+            pos_hint: {"center_x": 0.3, "center_y": 0.65}
+            icon_left: "email"
+
+        MDTextField:
+            id: telefoneCadastro
+            text: "+5511"
+            font_size: 18
+            hint_text: "Telefone"
+            size_hint_x: .3
+            pos_hint: {"center_x": 0.3, "center_y": 0.55}
+            icon_left: "phone"
+
+        MDTextField:
+            id: senhaCadastro
+            font_size: 18
+            hint_text: "Senha"
+            #hint_text: root.hint_text
+            pos_hint: {"center_x": 0.3, "center_y": 0.45}
+            size_hint_x: .3
+            text: root.text
+            password: True
+            icon_left: "key-variant"
+        
+        MDIconButton:
+            icon: "eye-off"
+            pos_hint: {"center_x": 0.43, "center_y": 0.45}
+            pos: senhaCadastro.width - self.width + dp(8), 0
+            theme_text_color: "Hint"
+            on_release:
+                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                senhaCadastro.password = False if senhaCadastro.password is True else True
+
+        MDTextField:
+            id: confirmarSenhaCadastro
+            font_size: 18
+            hint_text: "Confirmar Senha"
+            #hint_text: root.hint_text
+            pos_hint: {"center_x": 0.3, "center_y": 0.35}
+            size_hint_x: .3
+            text: root.text
+            password: True
+            icon_left: "key-variant"
+        
+        MDIconButton:
+            icon: "eye-off"
+            pos_hint: {"center_x": 0.43, "center_y": 0.35}
+            pos: confirmarSenhaCadastro.width - self.width + dp(8), 0
+            theme_text_color: "Hint"
+            on_release:
+                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                confirmarSenhaCadastro.password = False if confirmarSenhaCadastro.password is True else True
+        
+        MDFillRoundFlatIconButton:
+            text: "Realizar cadastro"
+            font_size: 18
+            icon: "account-plus"
+            icon_color: 0.18, 0.40, 0.51
+            theme_text_color: "Hint"
+            md_bg_color: 0.15, 0.33, 0.42
+            pos_hint: {"center_x": 0.3, "center_y": 0.25}
+            size_hint_x: .3
+            on_release:
+                root.verificarSenhaConfirmar()
+                root.criarTabela()
+
+        MDFillRoundFlatIconButton:
+            text: "Voltar"
+            font_size: 18
+            icon: "arrow-u-left-bottom-bold"
+            icon_color: 0.18, 0.40, 0.51
+            theme_text_color: "Hint"
+            md_bg_color: 0.15, 0.33, 0.42
+            pos_hint: {"center_x": 0.3, "center_y": 0.17}
+            size_hint_x: .3
+            on_release:
+                root.resetarDadosCadastro()
+                root.manager.transition.direction = "right"
+                root.manager.current = 's1'
+
+        

@@ -1,0 +1,143 @@
+
+<ScreenOneView>
+    height: senhaLogin.height
+    name: "s1"
+    MDScreen:
+        #MDRaisedButton:
+        #    text: "Clique aqui"
+        #    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+        Image:
+            source: "imagens/login/background.png"
+            size_hint:(1, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+
+        Image:
+            source: "imagens/login/background.png"
+            size_hint:(1, 1)
+            pos_hint: {"center_x": 0.5, "center_y": 0.3}
+
+        Image:
+            source: "imagens/login/background_login.png"
+            size_hint:(1, 1)
+            pos_hint: {"center_x": 0.717, "center_y": 0.5}
+
+        Image:
+            source: "imagens/login/astronauta.png"
+            size_hint: (0.4, 0.6)
+            pos_hint: {"center_x": 0.2, "center_y": 0.25}
+
+
+        MDLabel:
+            text: "Seja bem vindo!"
+            font_style: "H3"
+            bold: True
+            font_name: "fontes/exo_space/Exo Space DEMO.ttf"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.25, "center_y": 0.637}
+
+        MDLabel:
+            text: "Já possui uma conta  Faça o login!"
+            font_style: "Caption"
+            font_size: 16
+            bold: True
+            font_name: "fontes/exo_space/Exo Space DEMO.ttf"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.28, "center_y": 0.6}
+
+        MDLabel
+            text: "?"
+            font_style: "Caption"
+            font_size: 16
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.307, "center_y": 0.6}
+
+        MDTextField:
+            id: emailLogin
+            hint_text: "Digite o email cadastrado"
+            pos_hint: {"center_x": 0.72, "center_y": 0.57}
+            size_hint_x: .4
+            text_color_normal: 0.15, 0.33, 0.42
+            text_color_focus: "blue"
+            helper_text_color_normal: "red"
+            helper_text_mode: "persistent"
+            icon_left: "email"
+            max_length_text_color: "red"
+            icon_left_color_normal: 0.15, 0.33, 0.42
+            icon_left_color_focus: "blue"
+
+        MDTextField:
+            id: senhaLogin
+            hint_text: "Digite a senha"
+            pos_hint: {"center_x": 0.72, "center_y": 0.45}
+            size_hint_x: .4
+            text_color_normal: 0.15, 0.33, 0.42
+            text_color_focus: "blue"
+            password: True
+            helper_text_color_normal: "red"
+            helper_text: ""
+            helper_text_mode: "persistent"
+            icon_left_color_focus: "blue"
+            icon_left_color_normal: 0.15, 0.33, 0.42
+            icon_left: "key-variant"
+        
+        MDIconButton:
+            icon: "eye-off"
+            pos_hint: {"center_x": 0.9, "center_y": 0.45}
+            pos: senhaLogin.width - self.width + dp(8), 0
+            theme_text_color: "Hint"
+            on_release:
+                self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+                senhaLogin.password = False if senhaLogin.password is True else True
+
+        MDLabel:
+            text: "Esqueceu sua senha?"
+            font_style: "Caption"
+            theme_text_color: "Hint"
+            #text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.689, "center_y": 0.39}
+
+        MDTextButton:
+            text: "Clique aqui"
+            font_style: "Caption"
+            theme_text_color: "Hint"
+            #text_color: 1, 1, 1, 1
+            halign: "center"
+            pos_hint: {"center_x": 0.804, "center_y": 0.39}
+            on_release:
+                root.manager.transition.direction = "up"
+                root.manager.current = 's3'
+                
+
+
+        MDFillRoundFlatButton:
+            text: "Entrar"
+            font_size: 18
+            md_bg_color: 0.15, 0.33, 0.42
+            pos_hint: {"center_x": 0.72, "center_y": 0.30}
+            size_hint_x: .3
+            theme_text_color: "Hint"
+            md_bg_color: 0.15, 0.33, 0.42
+            on_release:
+                root.exibirAtividade()
+                root.verificarStatusUsuario()
+        
+        MDFillRoundFlatButton:
+            text: "Registrar-se"
+            font_size: 18
+            md_bg_color: 0.15, 0.33, 0.42
+            pos_hint: {"center_x": 0.72, "center_y": 0.20}
+            size_hint_x: .3
+            theme_text_color: "Hint"
+            on_release:
+                root.manager.transition.direction = "down"
+                root.manager.current = 's2'
+
+                
